@@ -55,22 +55,14 @@ class Solution
     {
         // Your code here
         Arrays.sort(arr, new JobComparator());
-        // for(Job j : arr){
-        //     System.out.println(j.id + " " + j.deadline + " " + j.profit);
-        // }
-        int ans = 0;
-        int deadline = 1;
-        int cnt = 0;
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for(Job j : arr){
-            // for(int i = 1; i <= j.deadline; i++){
-                if(pq.isEmpty()) pq.add(j.profit);
-                else if(pq.size() < j.deadline) pq.add(j.profit);
-                else if(pq.peek() < j.profit){
-                    pq.poll();
-                    pq.add(j.profit);
-                }
-            // }
+            if(pq.isEmpty()) pq.add(j.profit);
+            else if(pq.size() < j.deadline) pq.add(j.profit);
+            else if(pq.peek() < j.profit){
+                pq.poll();
+                pq.add(j.profit);
+            }
         }
         int res[] = new int[2];
         res[0] = pq.size();
