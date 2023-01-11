@@ -44,7 +44,7 @@ class Solution {
         visited[0] = true;
         while(q.isEmpty() == false){
             int first = q.poll();
-            visited[first] = true;
+            // visited[first] = true;
             res.add(first);
             for(int val : adj.get(first)){
                 if(visited[val] == false){
